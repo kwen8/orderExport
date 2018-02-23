@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import 'handsontable/dist/handsontable.full.min.css'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.use(iView)
