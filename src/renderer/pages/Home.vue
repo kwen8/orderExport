@@ -35,7 +35,7 @@ export default {
       const files = e.dataTransfer
 
       Excel.onImport(files, () => {
-        var rt = Excel.getSheetsByIndex()// <===默认获取Sheet1
+        var rt = Excel.getSheetsByIndex()// <===默认获取Sheet
         var tmp = []
         rt.forEach(function (value, index, array) {
           var t = {}
@@ -44,11 +44,15 @@ export default {
           }
           tmp.push(t)
         })
-        /* eslint-disable */
-        new Handsontable(document.getElementById('excel'), {
-          data: tmp
+        Excel.readDataHead(tmp)
+        const hot = new Handsontable(document.getElementById('excel'), {
+          data: tmp,
+          colHeaders: true,
+          rowHeaders: true,
+          manualRowMove: true,
+          manualColumnMove: true
         })
-        /* eslint-disable */
+        console.log(hot.getSourceData())
       })
     }
   }
